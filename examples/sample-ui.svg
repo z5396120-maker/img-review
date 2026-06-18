@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+  <title id="title">Img Review sample UI</title>
+  <desc id="desc">A neutral dashboard mockup for trying Img Review annotations.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7f1e7"/>
+      <stop offset="1" stop-color="#e8efe1"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#faf8f3"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#1d1a16" flood-opacity=".14"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="820" fill="url(#bg)"/>
+  <rect x="92" y="76" width="1096" height="668" rx="36" fill="url(#card)" filter="url(#shadow)"/>
+  <rect x="92" y="76" width="1096" height="92" rx="36" fill="#161513"/>
+  <rect x="92" y="132" width="1096" height="36" fill="#161513"/>
+  <circle cx="144" cy="122" r="16" fill="#ff6b4a"/>
+  <circle cx="190" cy="122" r="16" fill="#f4c95d"/>
+  <circle cx="236" cy="122" r="16" fill="#9fd36a"/>
+  <text x="298" y="132" fill="#f4efe7" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800">Project Dashboard</text>
+
+  <text x="146" y="240" fill="#181715" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="850">Launch overview</text>
+  <text x="148" y="284" fill="#7c756b" font-family="Inter, Arial, sans-serif" font-size="24">A public sample screen for testing Img Review.</text>
+
+  <rect x="148" y="342" width="282" height="174" rx="24" fill="#f1ead7"/>
+  <rect x="470" y="342" width="282" height="174" rx="24" fill="#ded7ff"/>
+  <rect x="792" y="342" width="282" height="174" rx="24" fill="#dcebd1"/>
+  <text x="184" y="407" fill="#1b1a17" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="800">Onboarding</text>
+  <text x="184" y="453" fill="#81796f" font-family="Inter, Arial, sans-serif" font-size="21">72% complete</text>
+  <text x="506" y="407" fill="#1b1a17" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="800">Activation</text>
+  <text x="506" y="453" fill="#81796f" font-family="Inter, Arial, sans-serif" font-size="21">Needs focus</text>
+  <text x="828" y="407" fill="#1b1a17" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="800">Retention</text>
+  <text x="828" y="453" fill="#81796f" font-family="Inter, Arial, sans-serif" font-size="21">Stable trend</text>
+
+  <rect x="148" y="574" width="736" height="76" rx="18" fill="#ff6b4a"/>
+  <text x="184" y="622" fill="#fff7ef" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="850">Continue setup</text>
+  <path d="M822 612h24m0 0-10-10m10 10-10 10" fill="none" stroke="#fff7ef" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="922" y="574" width="152" height="76" rx="18" fill="#f2eee6" stroke="#dfd6c8"/>
+  <text x="960" y="622" fill="#6f675e" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="750">Skip</text>
+</svg>
