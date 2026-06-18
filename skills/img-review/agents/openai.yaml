@@ -1,0 +1,8 @@
+interface:
+  display_name: "Img Review"
+  short_description: "Mark images and turn feedback into changes."
+  brand_color: "#FF5F45"
+  default_prompt: "Use $img-review to annotate this screenshot and turn the visual feedback into concrete image or UI changes."
+
+policy:
+  allow_implicit_invocation: true
