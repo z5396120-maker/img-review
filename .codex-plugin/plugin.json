@@ -1,0 +1,24 @@
+{
+  "name": "img-review",
+  "version": "0.1.0",
+  "description": "Annotate static images and app screenshots, then turn visual feedback into image or code changes.",
+  "license": "MIT",
+  "keywords": ["img-review", "annotation", "screenshots", "image-editing", "ui-review"],
+  "author": {
+    "name": "Img Review"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Img Review",
+    "shortDescription": "Mark up images and turn comments into changes.",
+    "longDescription": "Automatically activates for image, screenshot, design, or Appshot review requests and opens a local annotation canvas directly in the visible Codex in-app Browser. Codex can consume the saved structured feedback, edit the source image or UI code, verify the result, and prepare a commit.",
+    "developerName": "Img Review",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "brandColor": "#FF5F45",
+    "defaultPrompt": [
+      "Open Img Review in the in-app Browser.",
+      "Review these image versions and prepare revisions."
+    ]
+  }
+}
