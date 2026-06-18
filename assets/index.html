@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Img Review</title>
+  <link rel="stylesheet" href="styles.css?v=20260618093000">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-block">
+      <div class="brand-mark" aria-hidden="true">⌗</div>
+      <strong class="product-name">Img Review</strong>
+      <span class="top-divider"></span>
+      <p class="eyebrow">CODEX VISUAL REVIEW</p>
+      <input id="review-title" class="title-input" value="Img Review" aria-label="Review title">
+    </div>
+    <div class="top-file-tabs">
+      <div id="asset-tabs" class="asset-tabs" aria-label="Open images"></div>
+      <label class="button secondary add-image-button">Add image<input id="file-input" type="file" accept="image/*" multiple hidden></label>
+    </div>
+    <div class="top-actions">
+      <button id="export-json" class="button secondary">Export JSON</button>
+      <button id="export-md" class="button secondary">Export Markdown</button>
+      <button id="submit-codex" class="button primary">Send to Codex</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="toolbar" aria-label="Annotation tools">
+      <div class="tool-group">
+        <p class="tool-group-label">Select</p>
+        <button class="tool active" data-tool="select" title="Select"><span class="tool-icon">↖</span><span>Select</span></button>
+        <button class="tool" data-tool="magic" title="Smart select by color and contour"><span class="tool-icon">⌁</span><span>Magic</span></button>
+      </div>
+      <div class="tool-group">
+        <p class="tool-group-label">Markup</p>
+        <button class="tool" data-tool="rect" title="Rectangle"><span class="tool-icon">□</span><span>Box</span></button>
+        <button class="tool" data-tool="arrow" title="Arrow"><span class="tool-icon">↗</span><span>Arrow</span></button>
+        <button class="tool" data-tool="pen" title="Freehand"><span class="tool-icon">⌁</span><span>Draw</span></button>
+        <button class="tool" data-tool="point" title="Point"><span class="tool-icon">＋</span><span>Point</span></button>
+      </div>
+      <div class="tool-group">
+        <p class="tool-group-label">History</p>
+        <button id="undo" class="tool" title="Undo (Cmd/Ctrl+Z)" disabled><span class="tool-icon">↶</span><span>Undo</span></button>
+        <button id="redo" class="tool" title="Redo (Cmd/Ctrl+Shift+Z)" disabled><span class="tool-icon">↷</span><span>Redo</span></button>
+      </div>
+      <div class="tool-group tool-group-bottom">
+        <p class="tool-group-label">View</p>
+        <button id="zoom-out" class="tool" title="Zoom out"><span class="tool-icon">−</span><span>Zoom</span></button>
+        <button id="zoom-reset" class="tool compact" title="Reset zoom">100%</button>
+        <button id="zoom-in" class="tool" title="Zoom in"><span class="tool-icon">＋</span><span>Zoom</span></button>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <div class="workspace-bar">
+        <div class="workspace-bar-main">
+          <span class="canvas-context">Canvas</span>
+        </div>
+        <div class="workspace-bar-actions">
+          <label class="compare-toggle"><input id="compare-enabled" type="checkbox"> Compare</label>
+          <select id="compare-asset" aria-label="Comparison image"></select>
+          <input id="compare-slider" type="range" min="0" max="100" value="50" aria-label="Comparison split">
+        </div>
+      </div>
+      <div class="properties-bar">
+        <div id="magic-settings" class="magic-settings" hidden>
+          <span class="properties-label">Magic selection</span>
+          <div class="selection-modes" role="group" aria-label="Magic selection mode">
+            <button class="selection-mode active" data-magic-mode="new" title="New selection">New</button>
+            <button class="selection-mode" data-magic-mode="add" title="Add to selection (Shift)">＋ Add</button>
+            <button class="selection-mode" data-magic-mode="subtract" title="Subtract from selection (Option/Alt)">− Subtract</button>
+          </div>
+          <label>Tolerance
+            <input id="magic-tolerance" type="range" min="4" max="120" value="32">
+            <output id="magic-tolerance-value">32</output>
+          </label>
+          <label>Sample
+            <select id="magic-sample-size" aria-label="Magic sample size">
+              <option value="1">Point</option>
+              <option value="3" selected>3 × 3</option>
+              <option value="5">5 × 5</option>
+            </select>
+          </label>
+          <label class="magic-check"><input id="magic-smooth" type="checkbox" checked> Smooth edges</label>
+        </div>
+      </div>
+      <div id="empty-state" class="empty-state">
+        <div class="empty-mark">＋</div>
+        <h2>Add an image to begin</h2>
+        <p>Drop, paste, or upload a generated image, screenshot, design export, or Appshot capture.</p>
+        <label class="button primary">Choose images<input type="file" accept="image/*" multiple hidden data-file-proxy></label>
+      </div>
+      <div id="canvas-shell" class="canvas-shell" hidden>
+        <div id="stage" class="stage">
+          <div id="image-frame" class="image-frame">
+            <img id="main-image" draggable="false" alt="Review asset">
+            <div id="compare-layer" class="compare-layer"><img id="compare-image" draggable="false" alt="Comparison asset"></div>
+            <canvas id="element-preview" aria-hidden="true"></canvas>
+            <svg id="annotation-layer" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-label="Annotation canvas"></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside id="comments-panel" class="comments-panel">
+      <div class="panel-heading">
+        <div><p class="eyebrow">REVIEW NOTES</p><h2>Annotations</h2></div>
+        <div class="panel-heading-actions">
+          <span id="annotation-count" class="count">0</span>
+          <button id="toggle-comments" class="panel-toggle" title="Collapse annotations" aria-label="Collapse annotations" aria-expanded="true">›</button>
+        </div>
+      </div>
+      <div class="inspector-tabs" role="tablist" aria-label="Inspector sections">
+        <button class="inspector-tab active" type="button" data-inspector-tab="annotations">Annotations</button>
+        <button class="inspector-tab" type="button" data-inspector-tab="selection">Selection</button>
+      </div>
+      <section class="inspector-section active" data-inspector-panel="annotations">
+        <p class="hint">Mark or transform the image. Written instructions are optional.</p>
+        <div id="comments-list" class="comments-list"></div>
+      </section>
+      <section class="inspector-section" data-inspector-panel="selection">
+        <p class="hint">Selected element details appear here after you choose an annotation.</p>
+        <div id="selection-summary" class="selection-summary"></div>
+      </section>
+      <div class="inspector-footer">
+        <div id="save-status" class="save-status" role="status"></div>
+        <div class="inspector-actions">
+          <button id="save-review" class="button secondary">Save draft</button>
+          <button id="submit-codex-footer" class="button primary" type="button">Send to Codex</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <div id="drop-overlay" class="drop-overlay" hidden>
+    <div class="drop-card">
+      <div class="drop-mark">＋</div>
+      <strong>Drop images to review</strong>
+      <span>PNG, JPG, WebP, GIF, or SVG. You can also paste from clipboard.</span>
+    </div>
+  </div>
+
+  <script src="app.js?v=20260618093000"></script>
+</body>
+</html>
