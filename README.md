@@ -2,6 +2,8 @@
 
 Annotate screenshots, generated images, and UI captures so Codex can understand exactly what you want changed.
 
+![Img Review demo](media/demo.svg)
+
 Img Review is a local Codex plugin and skill for visual feedback during vibe coding. Instead of trying to describe "move this card a little left" or "make this selected element look like that" in vague text, you can mark the image directly, select visual elements, move/scale/rotate them into the target state, and send structured instructions back to Codex.
 
 ## Why This Exists
